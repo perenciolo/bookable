@@ -1,11 +1,11 @@
 <template>
   <div class="flex-fill d-flex flex-column">
     <nav class="navbar bg-white border-bottom navbar-light">
-      <router-link class="navbar-brand mr-auto" :to="{ name: 'Index' }">
+      <router-link class="navbar-brand mr-auto" :to="{ name: 'index' }">
         Home
       </router-link>
-      <router-link class="btn nav-button" :to="{ name: 'Index' }">
-        About
+      <router-link class="btn nav-button" :to="{ name: 'bookable' }">
+        Bookable
       </router-link>
     </nav>
     <main class="flex-fill d-flex">

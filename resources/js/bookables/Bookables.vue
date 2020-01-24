@@ -4,16 +4,17 @@
   </div>
 
   <div v-else>
-    <div class="row mb-4" v-for="row in rows" :key="`row-${row}`">
+    <div
+      class="row mb-4 d-flex align-items-stretch"
+      v-for="row in rows"
+      :key="`row-${row}`"
+    >
       <div
-        class="col"
+        class="col d-flex align-items-stretch"
         v-for="(bookable, idx) in bookablesInRow(row)"
         :key="`col-${idx}-${row}`"
       >
-        <bookable-list-item
-          :title="`${bookable.title} ${++idx}`"
-          :content="`${bookable.content} ${idx}`"
-        ></bookable-list-item>
+        <bookable-list-item v-bind="bookable"></bookable-list-item>
       </div>
       <div
         class="col"
@@ -29,40 +30,7 @@ import BookableListItem from './BookableListItem'
 export default {
   components: { BookableListItem },
   data: () => ({
-    bookables: [
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      },
-      {
-        title: 'Cheap Villa',
-        content: 'A very cheap villa'
-      }
-    ],
+    bookables: [],
     columns: 3,
     loading: false
   }),
@@ -73,14 +41,11 @@ export default {
         : 0
     }
   },
-  created() {
+  async created() {
     this.loading = true
-
-    const self = this
-
-    setTimeout(function() {
-      self.loading = false
-    }, 3000)
+    const response = await axios.get('/api/bookables')
+    this.bookables = response.data
+    this.loading = false
   },
   methods: {
     bookablesInRow(row) {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Bookable;
 use Illuminate\Http\Request;
 
 /*
@@ -13,7 +14,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
-Route::post('/logout', 'AuthController@logout');
-Route::get('/user', 'AuthController@user');
+// Route::post('/register', 'AuthController@register');
+// Route::post('/login', 'AuthController@login');
+// Route::post('/logout', 'AuthController@logout');
+// Route::get('/user', 'AuthController@user');
+
+Route::get('bookables', function (Request $request) {
+    return Bookable::all();
+});
+
+Route::get('bookables/{id}', function (Request $request, $id) {
+    return Bookable::findOrFail($id);
+});

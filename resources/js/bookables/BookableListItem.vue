@@ -1,11 +1,15 @@
 <template>
-  <div class="card">
-    <div class="card-body">
+  <div class="card w-100">
+    <router-link
+      :to="{ name: 'bookable', params: { id } }"
+      tag="div"
+      class="card-body clickable"
+    >
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">
-        {{ content }}
+        {{ description }}
       </p>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -16,9 +20,12 @@ export default {
       type: String,
       required: true
     },
-    content: {
+    description: {
       type: String,
       required: true
+    },
+    id: {
+      type: Number
     }
   }
 }

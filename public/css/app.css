@@ -11356,6 +11356,10 @@ a.text-dark:focus {
   }
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 html,
 body,
 #app {

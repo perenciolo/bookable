@@ -1,12 +1,18 @@
 import VueRouter from 'vue-router'
 
 import Bookables from '../bookables/Bookables'
+import Bookable from '../bookable/Bookable'
 
 const routes = [
   {
     path: '/',
     component: Bookables,
-    name: 'Index'
+    name: 'index'
+  },
+  {
+    path: '/bookable/:id',
+    component: Bookable,
+    name: 'bookable'
   }
 ]
 
