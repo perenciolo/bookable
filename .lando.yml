@@ -1,0 +1,27 @@
+name: pyotr-laravel-backend
+recipe: laravel
+
+# Configure the laravel recipe
+config:
+  php: "7.2"
+  webroot: public
+  xdebug: false
+
+services:
+  database:
+    type: mariadb:10.3
+    portforward: 3307
+  node:
+    type: node:8
+    build:
+      - echo "Running NPM Install"
+      - "cd $LANDO_MOUNT/ && npm install --quiet"
+
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+# events:
+#   post-start:
+#     - appserver: php artisan migrate
