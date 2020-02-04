@@ -34,7 +34,7 @@ export default {
   async created() {
     const { id } = this.$route.params
     const response = await axios.get(`/api/bookables/${id}`)
-    this.bookable = response.data
+    this.bookable = response.data.data
   }
 }
 </script>

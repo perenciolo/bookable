@@ -19,10 +19,7 @@ use Illuminate\Http\Request;
 // Route::post('/logout', 'AuthController@logout');
 // Route::get('/user', 'AuthController@user');
 
-Route::get('bookables', function (Request $request) {
-    return Bookable::all();
-});
+// Route::get('bookables', 'Api\BookableController@index');
+// Route::get('bookables/{id}', 'Api\BookableController@show');
 
-Route::get('bookables/{id}', function (Request $request, $id) {
-    return Bookable::findOrFail($id);
-});
+Route::apiResource('bookables', 'Api\BookableController');

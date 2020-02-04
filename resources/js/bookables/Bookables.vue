@@ -44,7 +44,7 @@ export default {
   async created() {
     this.loading = true
     const response = await axios.get('/api/bookables')
-    this.bookables = response.data
+    this.bookables = response.data.data
     this.loading = false
   },
   methods: {
@@ -55,7 +55,6 @@ export default {
       if (this.bookablesInRow(row)) {
         return this.columns - this.bookablesInRow(row).length
       }
-
       return this.columns
     }
   }

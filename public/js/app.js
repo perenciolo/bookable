@@ -2011,7 +2011,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 3:
               response = _context.sent;
-              this.bookable = response.data;
+              this.bookable = response.data.data;
 
             case 5:
             case "end":
@@ -2150,7 +2150,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 3:
               response = _context.sent;
-              this.bookables = response.data;
+              this.bookables = response.data.data;
               this.loading = false;
 
             case 6:
